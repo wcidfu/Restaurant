@@ -1,0 +1,59 @@
+﻿<Window x:Class="Restaurant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Icon="/Assets/RestuarantIcon.ico"
+        WindowStartupLocation="CenterScreen"
+        Title="Главная" Height="700" Width="1200">
+    <Grid x:Name="MainGrid" Margin="10">
+       
+        
+        <TextBox x:Name="UserNameTextBox" 
+                 HorizontalAlignment="Right" 
+                 Margin="0,10,10,0" 
+                 TextWrapping="Wrap" 
+                 Text="Имя пользователя" 
+                 VerticalAlignment="Top" 
+                 Width="250" 
+                 FontSize="20"
+                 IsReadOnly="True"
+                 BorderBrush="White" 
+                 Background="White" TextAlignment="Center"/>
+
+        <Label Content="РЕСТОРАН.admin" 
+               HorizontalAlignment="Left" 
+               Margin="20,10,0,0" 
+               VerticalAlignment="Top" 
+               FontWeight="Bold" 
+               FontSize="24" 
+               Width="217"/>
+
+        <DataGrid x:Name="ProductDataGrid" 
+                  VerticalAlignment="Top" 
+                  Margin="237,70,237,200" 
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>
+                <DataGridTextColumn Header="Изображение" Binding="{Binding ImagePath}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="10,0,10,10" Height="180">
+            <Label Content="Добавить / Редактировать продукт:" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Кнопки действий -->
+            <StackPanel x:Name="AdminButtonsPanel" Orientation="Horizontal" Margin="0,10,0,0" Visibility="Collapsed">
+                <Button Content="Добавить" Width="100" Margin="5" Click="AddProduct_Click"/>
+                <Button Content="Редактировать" Width="100" Margin="5" Click="EditProduct_Click"/>
+                <Button Content="Удалить" Width="100" Margin="5" Click="DeleteProduct_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
